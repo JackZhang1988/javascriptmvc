@@ -1,0 +1,663 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pub",
+				"PubSub"
+			],
+			[
+				"proto",
+				"prototype  (variable)"
+			],
+			[
+				"fi",
+				"first-letter  (pseudo-class)"
+			],
+			[
+				"mar",
+				"margin-left"
+			],
+			[
+				"margi",
+				"margin-left"
+			],
+			[
+				"inn",
+				"inline-block"
+			],
+			[
+				"toDo",
+				"toDoType"
+			],
+			[
+				"ng-re",
+				"ng-repeat"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"div",
+				"divShowMember"
+			],
+			[
+				"bar",
+				"background"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"requ",
+				"requestStr"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "\n$(document).ready(function(){\n	this.appname=\"appname\";\n	document.getElementById(\"btn\").addEventListener('click',function(e){\n		alert(this.appname);\n	},false);\n\n	$('#btn2').click($.proxy(function(){ \n		alert(this.appname);\n	},this))\n\n	// $(\"div ul li\").click(function(){\n	// 	console.log($(this).html());\n	// });\n\n	$(\"#delegateDiv ul\").delegate(\"li\",\"click\",function(){\n		console.log($(this).html());\n	});\n\n	$(\".myEvent\").trigger(\"myTrigger\");\n\n	$(\".myEvent\").bind(\"myTrigger\",function(){});\n	$(\"#tabs\").iTabs(\"#tabContent\");\n\n	$(\"#pubsub\").on(\"click\",function(){\n		PubSub.publish('mysub');\n	});\n});\n\n$.fn.iTabs=function(control){\n	var element = $(this);\n	var control=$(control);\n\n	element.delegate(\"li\",\"click\",function(){\n		var tabName=$(this).attr(\"data-tab\");\n		element.trigger(\"change.tab\",tabName);\n	});\n\n	element.bind(\"change.tab\",function(e,tabName){\n		element.find('li').removeClass(\"active\");\n		element.find(\">[data-tab='\"+tabName+\"']\").addClass(\"active\");\n		control.find(\">[data-tab]\").removeClass(\"active\");\n		control.find(\">[data-tab='\"+tabName+\"']\").addClass('active');\n	});\n\n	element.bind(\"change.tab\",function(e,tabName){\n		window.location.hash=tabName;\n	});\n\n	$(window).bind(\"hashchange\",function(){\n		var tabName=window.location.hash.slice(1);\n		$(\"#tabs\").trigger(\"change.tab\",tabName);\n	});\n\n	var firstname=element.find(\"li:first\").attr(\"data-tab\");\n	element.trigger(\"change.tab\",firstname);\n\n	return this;\n}\n\nvar PubSub={\n	subscribe:function(ev,callback){\n		var calls=this._callbacks || (this._callbacks={});\n\n		(this._callbacks[ev] || (this._callbacks[ev] = [])).push(callback);\n\n		return this;\n	},\n	publish:function(){\n		var args=Array.prototype.slice.call(arguments,0);\n\n		var ev=args.shift();\n\n		var list,calls,i,l;\n		if(!(call=this._callbacks)) return this;\n		if(!(list=this._callbacks[ev])) return this;\n\n		for(i=0; i<list.length; i++){\n			list[i].apply(this,args);\n		}\n		return this;\n	}\n}\n\nPubSub.subscribe(\"mysub\",function(){\n	alert(\"mysub triggered!\");\n});\n\n\n",
+			"file": "jsEvent/main.js",
+			"file_size": 2086,
+			"file_write_time": 130282869796533180,
+			"settings":
+			{
+				"buffer_size": 1989,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "jsEvent/main.html",
+			"settings":
+			{
+				"buffer_size": 1898,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"insta	",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"sshtm	",
+				"Set Syntax: HTML"
+			],
+			[
+				"ins	",
+				"Package Control: Install Package"
+			],
+			[
+				"sshtml",
+				"Set Syntax: HTML"
+			],
+			[
+				"sspy	",
+				"Set Syntax: Python"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"instal	",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 536.0
+	},
+	"console":
+	{
+		"height": 355.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/zhangji/Desktop/Project/Javascript MVC/jsClass/main.js",
+		"/C/Users/zhangji/Desktop/angularTutorial.sublime-project",
+		"/C/Users/zhangji/Desktop/Angularjs/angular-phonecat/app/index.html",
+		"/C/Users/zhangji/Desktop/Angularjs/angular-phonecat/scripts/private/ScrapeData.js",
+		"/C/Users/zhangji/Desktop/Angularjs/angular-phonecat/app/js/services.js",
+		"/C/Users/zhangji/Desktop/Angularjs/angular-phonecat/app/js/controllers.js",
+		"/C/Users/zhangji/Desktop/Angularjs/angular-phonecat/test/unit/controllersSpec.js",
+		"/C/Users/zhangji/Desktop/Angularjs/angular-phonecat/app/phones/phones.json",
+		"/C/Users/zhangji/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/zhangji/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/zhangji/AppData/Roaming/Sublime Text 2/Packages/AngularJS/AngularJS-sublime-package.sublime-settings",
+		"/C/Users/zhangji/AppData/Roaming/Sublime Text 2/Packages/AngularJS/AngularJS-completions.sublime-settings",
+		"/C/Users/zhangji/AppData/Roaming/Sublime Text 2/Packages/User/AngularJS-sublime-package.sublime-settings",
+		"/C/Users/zhangji/AppData/Roaming/Sublime Text 2/Packages/User/HTML.sublime-settings",
+		"/C/Users/zhangji/Desktop/Angularjs/angularJsTest.html",
+		"/C/Users/zhangji/Desktop/Angularjs/controller.js",
+		"/C/WebUI/WebUI/Gruntfile.js",
+		"/C/WebUI/WebUI/login/login.html",
+		"/C/WebUI/WebUI/login/login-ctrl.js",
+		"/C/WebUI/WebUI/login/login.js",
+		"/C/WebUI/WebUI/dist/Casinolink-Web.js",
+		"/C/WebUI/NodeJS_Windows/websocket.js",
+		"/C/WebUI/NodeJS/app.js",
+		"/C/Users/zhangji/Desktop/webDev/Angular/myFirstAngular/angular.js",
+		"/C/Users/zhangji/Desktop/Angularjs/angular-phonecat-master/app/index.html",
+		"/C/Users/zhangji/Desktop/ShowError.html",
+		"/C/Users/zhangji/Desktop/Angularjs/angularJsTest",
+		"/C/Users/zhangji/Desktop/webDev/bootstrap/index.htm",
+		"/C/Users/zhangji/Desktop/webDev/bootstrap/index.css",
+		"/C/Users/zhangji/Desktop/webDev/CHICPAGE/chicMainPage.htm",
+		"/C/Users/zhangji/Desktop/webDev/CHICPAGE/css/bootstrap.css",
+		"/C/Users/zhangji/Desktop/webDev/CHICPAGE/css/main.css",
+		"/C/Users/zhangji/Desktop/webDev/CHICPAGE/index.html",
+		"/C/Users/zhangji/Desktop/webDev/bootstrap/test.htm",
+		"/C/Users/zhangji/Desktop/webDev/initializr-verekia-4.0/initializr/index.html",
+		"/C/Users/zhangji/Desktop/webDev/initializr-verekia-4.0/initializr/chicMainPage.htm",
+		"/C/Users/zhangji/Desktop/webDev/initializr-verekia-4.0/initializr/MyPage.htm",
+		"/C/Users/zhangji/Desktop/webDev/h5bp-html5-boilerplate-v4.2.0-0-g0adda79/h5bp-html5-boilerplate-0adda79/index.html",
+		"/C/Users/zhangji/Desktop/webDev/html5boilerplate/Test.htm",
+		"/C/Users/zhangji/Desktop/webDev/MySocialPage/MySocialPage.htm",
+		"/C/Users/zhangji/Desktop/webDev/h5bp-html5-boilerplate-v4.2.0-0-g0adda79/h5bp-html5-boilerplate-0adda79/css/main.css",
+		"/C/Users/zhangji/Desktop/webDev/h5bp-html5-boilerplate-v4.2.0-0-g0adda79/h5bp-html5-boilerplate-0adda79/js/plugins.js",
+		"/C/Users/zhangji/Desktop/webDev/h5bp-html5-boilerplate-v4.2.0-0-g0adda79/h5bp-html5-boilerplate-0adda79/js/main.js",
+		"/C/Users/zhangji/Desktop/webDev/MySocialPage/MySocialPage",
+		"/C/Users/zhangji/Desktop/webDev/bootstrap/html5shiv.js",
+		"/C/Users/zhangji/Desktop/webDev/Drupal/zen-7.x-5.1/zen/STARTERKIT/js/script.js",
+		"/C/Users/zhangji/Desktop/webDev/Node/helloworld.js",
+		"/C/Users/zhangji/Desktop/webDev/Node/myNodeServer.js",
+		"/C/Users/zhangji/Desktop/webDev/Drupal/zen-7.x-5.1/zen/js/html5-respond.js",
+		"/C/Users/zhangji/Desktop/webDev/Node/lib/sqlserver.native.js",
+		"/C/Users/zhangji/Desktop/webDev/Node/lib/sql.js",
+		"/C/Users/zhangji/Desktop/webDev/Node/node-sqlserver-master/test/datatypes.js",
+		"/C/Users/zhangji/Desktop/webDev/Node/node-sqlserver-master/test/CommonTestFunctions.js",
+		"/C/Users/zhangji/Desktop/webDev/Node/index.js",
+		"/C/Users/zhangji/Desktop/webDev/Node/requestHandlers.js",
+		"/C/Users/zhangji/Desktop/webDev/Node/router.js",
+		"/C/Users/zhangji/Desktop/webDev/Node/server.js",
+		"/C/Users/zhangji/Desktop/webDev/Node/HelloWorld.js",
+		"/C/Users/zhangji/AppData/Roaming/Sublime Text 2/Packages/Emmet/Emmet.sublime-settings",
+		"/C/Users/zhangji/AppData/Roaming/Sublime Text 2/Packages/emmet-sublime-master/emmet-sublime-master/Default (Windows).sublime-keymap",
+		"/C/Users/zhangji/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/zhangji/AppData/Roaming/Sublime Text 2/Packages/User/Emmet.sublime-settings",
+		"/C/Users/zhangji/AppData/Roaming/Sublime Text 2/Packages/Emmet/Default (Windows).sublime-keymap",
+		"/C/Users/zhangji/Desktop/Joomla Backup/ja_elastica_responsive_template_for_joomla/template/ja_elastica.v2.5.2/blocks/iphone/login.php",
+		"/C/Users/zhangji/Desktop/Softerware/cssLayout.htm"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"type3",
+			"wrapper",
+			"alert",
+			"PhoneListCtrl",
+			"angular",
+			"\n",
+			"text",
+			">\n",
+			"collapse",
+			"float",
+			"var",
+			"\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "jsEvent/main.js",
+					"settings":
+					{
+						"buffer_size": 1989,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1896,
+								1896
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 120.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "jsEvent/main.html",
+					"settings":
+					{
+						"buffer_size": 1898,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								311,
+								311
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 20.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"css",
+				"app/css/app.css"
+			],
+			[
+				"inde",
+				"app/index.html"
+			],
+			[
+				"par",
+				"app/partials/partial2.html"
+			],
+			[
+				"cont",
+				"app/js/controllers.js"
+			],
+			[
+				"part",
+				"app/partials/partial1.html"
+			],
+			[
+				"scn",
+				"test/e2e/scenarios.js"
+			],
+			[
+				"scr",
+				"scripts/private/ScrapeData.js"
+			],
+			[
+				"e2e",
+				"test/e2e/scenarios.js"
+			],
+			[
+				"serv",
+				"app/js/services.js"
+			],
+			[
+				"phones",
+				"app/phones/phones.json"
+			],
+			[
+				"controllerspe",
+				"test/unit/controllersSpec.js"
+			],
+			[
+				"contr",
+				"app/js/controllers.js"
+			],
+			[
+				"lg",
+				"/C/WebUI/WebUI/login/login-ctrl.js"
+			],
+			[
+				"log",
+				"/C/WebUI/WebUI/login/login.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/WebUI/WebUISub.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 201.0,
+	"status_bar_visible": true
+}
